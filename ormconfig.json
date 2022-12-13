@@ -4,5 +4,9 @@
   "host": "localhost",
   "username": "docker",
   "password": "rampup",
-  "database": "person_crud"
+  "database": "person_crud",
+  "migrations": ["./src/database/migrations/*.ts"],
+  "cli": {
+    "migrationsDir": "./src/database/migrations"
+  }
 }
