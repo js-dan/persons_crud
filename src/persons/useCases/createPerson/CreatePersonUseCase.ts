@@ -1,4 +1,4 @@
-import { PersonInterfaceRepository } from "../repositories/PersonInterfaceRepository";
+import { PersonInterfaceRepository } from "../../repositories/PersonInterfaceRepository";
 
 interface PersonRequest {
   first_name: string,
@@ -9,16 +9,14 @@ interface PersonRequest {
   age?: number,
 }
 
-class CreatePersonService {
+export class CreatePersonUseCase {
   constructor(private personsRepository: PersonInterfaceRepository) {}
 
-  execute( { first_name, last_name, cpf, email, gender = 'undefined', age }: PersonRequest): void {
+  async execute( { first_name, last_name, cpf, email, gender = 'undefined', age }: PersonRequest): Promise<void> {
     const personAlreadyExists = this.personsRepository.findByCpf(cpf);
-    if (personAlreadyExists) {
+    if (await personAlreadyExists) {
       throw new Error("Person already exists.");
     }
     this.personsRepository.create({ first_name, last_name, cpf, email, gender, age })
   }
 }
-
-export default CreatePersonService;
