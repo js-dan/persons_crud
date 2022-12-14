@@ -1,4 +1,4 @@
-import { PersonsRepository } from "../../repositories/PersonsRepository";
+import { PersonsRepository } from "../../repositories/implementations/PersonsRepository";
 import { CreatePersonController } from "./CreatePersonController";
 import { CreatePersonUseCase } from "./CreatePersonUseCase";
 
