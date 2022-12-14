@@ -1,34 +1,30 @@
+import { getRepository, Repository } from "typeorm";
 import { Person } from "../entities/Person";
 import { CreatePersonDTO, PersonInterfaceRepository } from "./PersonInterfaceRepository";
 
 export class PersonsRepository implements PersonInterfaceRepository {
-  private persons: Person[] = [];
+  private repository: Repository<Person>;
 
   constructor() {
-    this.persons = [];
+    this.repository = getRepository(Person);
   }
 
-  create({ first_name, last_name, cpf, email, gender, age }: CreatePersonDTO): void {
+  async create({ first_name, last_name, cpf, email, gender, age }: CreatePersonDTO): Promise<void> {
 
-    const person = new Person();
-    Object.assign(person,{
-      first_name,
-      last_name,
-      cpf,
-      email,
-      gender,
-      age,
+    const person = this.repository.create({
+      first_name, last_name, cpf, email, gender, age
     })
   
-    this.persons.push(person);
+    await this.repository.save(person)
   } 
 
-  list(): Person[] {
-    return this.persons;
+  async list(): Promise<Person[]> {
+    const persons = await this.repository.find();
+    return persons;
   }
 
-  findByCpf(cpf: string): Person | undefined {
-    const person = this.persons.find((person) => person.cpf === cpf);
+  async findByCpf(cpf: string): Promise<Person | undefined> {
+    const person = await this.repository.findOne({ cpf });
 
     return person;
   }

@@ -10,7 +10,7 @@ export interface CreatePersonDTO {
 }
 
 export interface PersonInterfaceRepository {
-  findByCpf(cpf: string): Person | undefined;
-  list(): Person[];
-  create({ first_name, last_name, cpf, email, gender, age }: CreatePersonDTO): void;
+  findByCpf(cpf: string): Promise<Person | undefined>;
+  list(): Promise<Person[]>;
+  create({ first_name, last_name, cpf, email, gender, age }: CreatePersonDTO): Promise<void>;
 }
