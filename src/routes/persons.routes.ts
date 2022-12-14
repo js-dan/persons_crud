@@ -19,27 +19,3 @@ personsRoutes.get('/persons', (request, response) => {
 
   return response.status(200).json(allPersons)
 })
-
-// function verifyIfExistsPerson(request, response, next) {
-//   const { cpf } = request.headers;
-//   const person = persons.find((person) => person.cpf === cpf);
-
-//   if (!person) {
-//     return response.status(400).json({ error: "Person not found." });
-//   }
-
-//   request.person = person;
-
-//   return next();
-// }
-
-// function alreadyCreatedPerson(request, response, next) {
-//   const { cpf } = request.headers;
-//   const personAlreadyExists = persons.some((person) => person.cpf === cpf);
-
-//   if (personAlreadyExists) {
-//     return response.status(400).json({ error: "Person already exists." });
-//   }
-
-//   return next();
-// }
