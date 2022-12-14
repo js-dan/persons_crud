@@ -2,7 +2,11 @@ import { PersonsRepository } from "../../repositories/implementations/PersonsRep
 import { CreatePersonController } from "./CreatePersonController";
 import { CreatePersonUseCase } from "./CreatePersonUseCase";
 
-const personsRepository = new PersonsRepository();
-const createPersonUseCase = new CreatePersonUseCase(personsRepository);
-
-export const createPersonController = new CreatePersonController(createPersonUseCase);
+export default (): CreatePersonController => {
+  const personsRepository = new PersonsRepository();
+  const createPersonUseCase = new CreatePersonUseCase(personsRepository);
+  
+  const createPersonController = new CreatePersonController(createPersonUseCase);
+  
+  return createPersonController;
+}

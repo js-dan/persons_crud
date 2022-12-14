@@ -2,7 +2,12 @@ import { PersonsRepository } from "../../repositories/implementations/PersonsRep
 import { ListPersonsController } from "./ListPersonsController";
 import { ListPersonsUseCase } from "./ListPersonsUseCase";
 
-const personsRepository = new PersonsRepository();
-const listPersonsUseCase = new ListPersonsUseCase(personsRepository);
 
-export const listPersonsController = new ListPersonsController(listPersonsUseCase);
+export default () => {
+  const personsRepository = new PersonsRepository();
+  const listPersonsUseCase = new ListPersonsUseCase(personsRepository);
+  
+  const listPersonsController = new ListPersonsController(listPersonsUseCase);
+
+  return listPersonsController;
+}

@@ -4,8 +4,8 @@ import { PersonInterfaceRepository } from "../../repositories/PersonInterfaceRep
 export class ListPersonsUseCase {
   constructor(private personsRepository: PersonInterfaceRepository) {}
 
-  execute(): Promise<Person[]> {
-    const persons = this.personsRepository.list();
+  async execute(): Promise<Person[]> {
+    const persons = await this.personsRepository.list();
     return persons;
   }
 }

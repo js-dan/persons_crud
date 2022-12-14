@@ -1,6 +1,6 @@
 import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm"
 
-@Entity("categories")
+@Entity("persons")
 
 export class Person {
   @Column()
