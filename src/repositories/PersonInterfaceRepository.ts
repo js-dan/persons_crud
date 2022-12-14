@@ -1,4 +1,4 @@
-import { Person } from "../model/Person";
+import { Person } from "../entities/Person";
 
 export interface CreatePersonDTO {
   first_name: string;

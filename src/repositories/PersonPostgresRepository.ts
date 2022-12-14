@@ -1,4 +1,4 @@
-import { Person } from "../model/Person";
+import { Person } from "../entities/Person";
 import { CreatePersonDTO, PersonInterfaceRepository } from "./PersonInterfaceRepository";
 
 export class PersonPostgresRepository implements PersonInterfaceRepository {
