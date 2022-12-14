@@ -1,6 +1,6 @@
 import { Router } from "express"
-import { PersonsRepository } from "../repositories/PersonsRepository";
-import CreatePersonService from "../services/CreatePersonService";
+import { PersonsRepository } from "../persons/repositories/PersonsRepository";
+import CreatePersonService from "../persons/services/CreatePersonService";
 
 export const personsRoutes = Router();
 const personsRepository = new PersonsRepository()
