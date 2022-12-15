@@ -1,14 +1,12 @@
 import { Router } from "express"
-import { PersonsRepository } from "../persons/repositories/implementations/PersonsRepository";
-import createPersonController from "../persons/useCases/createPerson";
-import listPersonsController from "../persons/useCases/listPersons";
+import { CreatePersonController } from "../persons/useCases/createPerson/CreatePersonController";
+import { ListPersonsController } from "../persons/useCases/listPersons/ListPersonsController";
 
 export const personsRoutes = Router();
 
-personsRoutes.post('/person', (request, response) => {
-  return createPersonController().handle(request, response);
-})
+const createPersonController = new CreatePersonController()
+const listPersonsController = new ListPersonsController()
 
-personsRoutes.get('/persons', (request, response) => {
-  return listPersonsController().handle(request, response);
-})
+personsRoutes.post('/person', createPersonController.handle);
+
+personsRoutes.get('/persons', listPersonsController.handle);

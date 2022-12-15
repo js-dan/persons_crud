@@ -1,4 +1,5 @@
-import { PersonInterfaceRepository } from "../../repositories/PersonInterfaceRepository";
+import { inject, injectable } from "tsyringe";
+import { PersonsInterfaceRepository } from "../../repositories/PersonsInterfaceRepository";
 
 interface PersonRequest {
   first_name: string,
@@ -9,8 +10,12 @@ interface PersonRequest {
   age?: number,
 }
 
+@injectable()
 export class CreatePersonUseCase {
-  constructor(private personsRepository: PersonInterfaceRepository) {}
+  constructor(
+    @inject("PersonsRepository")
+    private personsRepository: PersonsInterfaceRepository
+  ) {}
 
   async execute( { first_name, last_name, cpf, email, gender = 'undefined', age }: PersonRequest): Promise<void> {
     const personAlreadyExists = this.personsRepository.findByCpf(cpf);

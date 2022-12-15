@@ -1,8 +1,8 @@
 import { getRepository, Repository } from "typeorm";
 import { Person } from "../../entities/Person";
-import { CreatePersonDTO, PersonInterfaceRepository } from "../PersonInterfaceRepository";
+import { CreatePersonDTO, PersonsInterfaceRepository } from "../PersonsInterfaceRepository";
 
-export class PersonsRepository implements PersonInterfaceRepository {
+export class PersonsRepository implements PersonsInterfaceRepository {
   private repository: Repository<Person>;
 
   constructor() {
