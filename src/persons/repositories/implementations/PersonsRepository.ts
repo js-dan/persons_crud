@@ -28,4 +28,8 @@ export class PersonsRepository implements PersonsInterfaceRepository {
 
     return person;
   }
+
+  async delete(cpf: string): Promise<void> {
+      await this.repository.delete({cpf})
+  }
 }
