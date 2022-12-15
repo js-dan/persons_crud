@@ -1,4 +1,5 @@
 import { inject, injectable } from "tsyringe";
+import { AppError } from "../../../database/errors/AppError";
 import { Person } from "../../entities/Person";
 import { PersonsInterfaceRepository } from "../../repositories/PersonsInterfaceRepository";
 
@@ -15,6 +16,6 @@ export class FindPersonsUseCase {
       const person = await this.personsRepository.findByCpf(cpf);
       return person;
     }
-    throw new Error("Person not exists.");
+    throw new AppError("Person not exists.", 404);
   }
 }
