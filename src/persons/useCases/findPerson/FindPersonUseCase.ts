@@ -1,5 +1,5 @@
 import { inject, injectable } from "tsyringe";
-import { AppError } from "../../../database/errors/AppError";
+import { AppError } from "../../../errors/AppError";
 import { Person } from "../../entities/Person";
 import { PersonsInterfaceRepository } from "../../repositories/PersonsInterfaceRepository";
 

@@ -4,7 +4,7 @@ import "express-async-errors"
 import "./database"
 import "./shared/container"
 import { personsRoutes } from "./routes/persons.routes";
-import { AppError } from "./database/errors/AppError";
+import { AppError } from "./errors/AppError";
 
 const app = express();
 app.use(express.json());
