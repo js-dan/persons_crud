@@ -4,7 +4,7 @@ import { Person } from "../../entities/Person";
 import { PersonsInterfaceRepository } from "../../repositories/PersonsInterfaceRepository";
 
 @injectable()
-export class FindPersonsUseCase {
+export class FindPersonUseCase {
   constructor(
     @inject("PersonsRepository")
     private personsRepository: PersonsInterfaceRepository
@@ -13,7 +13,6 @@ export class FindPersonsUseCase {
   async execute(cpf: string): Promise<Person|undefined> {
     const person = await this.personsRepository.findByCpf(cpf);
     if(person){
-      const person = await this.personsRepository.findByCpf(cpf);
       return person;
     }
     throw new AppError("Person not exists.", 404);

@@ -1,14 +1,6 @@
 import { inject, injectable } from "tsyringe";
-import { PersonsInterfaceRepository } from "../../repositories/PersonsInterfaceRepository";
-
-interface PersonRequest {
-  first_name: string,
-  last_name: string,
-  cpf: string,
-  email: string,
-  gender?: string,
-  age?: number,
-}
+import { AppError } from "../../../errors/AppError";
+import { CreatePersonDTO, PersonsInterfaceRepository } from "../../repositories/PersonsInterfaceRepository";
 
 @injectable()
 export class CreatePersonUseCase {
@@ -17,10 +9,10 @@ export class CreatePersonUseCase {
     private personsRepository: PersonsInterfaceRepository
   ) {}
 
-  async execute( { first_name, last_name, cpf, email, gender = 'undefined', age }: PersonRequest): Promise<void> {
+  async execute( { first_name, last_name, cpf, email, gender, age }: CreatePersonDTO): Promise<void> {
     const personAlreadyExists = this.personsRepository.findByCpf(cpf);
     if (await personAlreadyExists) {
-      throw new Error("Person already exists.");
+      throw new AppError("Person already exists.", 201);
     }
     this.personsRepository.create({ first_name, last_name, cpf, email, gender, age })
   }

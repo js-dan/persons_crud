@@ -6,7 +6,7 @@ export class CreatePersonController {
 
   async handle(request: Request, response: Response): Promise<Response>{
     const { first_name, last_name, cpf, email, gender, age } = request.body;
-    
+
     const createPersonUseCase = container.resolve(CreatePersonUseCase);
     await createPersonUseCase.execute({ first_name, last_name, cpf, email, gender, age })
 
