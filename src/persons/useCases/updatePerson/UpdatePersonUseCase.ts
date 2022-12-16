@@ -13,8 +13,6 @@ export class UpdatePersonUseCase {
   async execute( { first_name, last_name, cpf, email, gender, age }: UpdatePersonDTO): Promise<Person |void> {
     const personAlreadyExists = await this.personsRepository.findByCpf(cpf);
     if (personAlreadyExists) {
-      console.log(first_name)
-      console.log("ppp")
       const person = await this.personsRepository.update({ first_name, last_name, cpf, email, gender, age })
       return person
     }
