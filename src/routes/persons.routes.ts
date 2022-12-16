@@ -1,9 +1,11 @@
 import { Router } from "express"
-import { CreatePersonController } from "../persons/useCases/createPerson/CreatePersonController";
-import { DeletePersonController } from "../persons/useCases/deletePerson/DeletePersonController";
-import { FindPersonsController } from "../persons/useCases/findPerson/FindPersonController";
-import { ListPersonsController } from "../persons/useCases/listPersons/ListPersonsController";
-import { UpdatePersonController } from "../persons/useCases/updatePerson/UpdatePersonController";
+import { 
+  CreatePersonController, 
+  DeletePersonController, 
+  FindPersonsController, 
+  ListPersonsController, 
+  UpdatePersonController 
+} from "../persons/PersonController";
 
 export const personsRoutes = Router();
 
