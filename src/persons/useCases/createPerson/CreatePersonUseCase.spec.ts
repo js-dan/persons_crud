@@ -13,11 +13,11 @@ describe("Create person", () => {
 
   it("should be able to create a new person", async () => {
     const person = {
-      first_name: "Janesa",
-      last_name: "Doeew",
-      cpf: "06650",
+      first_name: "Jane",
+      last_name: "Doe",
+      cpf: "12345678901",
       email: "jdoe@crud.br",
-      gender: "IM",
+      gender: "F",
       age: 33,
     }
     await createPersonUseCase.execute({
